@@ -1,17 +1,18 @@
-//SEGUNDO DESAFIO
 
-const fs = require('fs');
+import fs from 'fs'
 
-class ProductManager {
+class ProductsManager {
   constructor(path) {
     this.path = path;
   }
 
-  async getProducts() {
+  async getProducts(queryObj) {
+    const {limit}= queryObj
     try {
       if (fs.existsSync(this.path)) {
         const info = await fs.promises.readFile(this.path, 'utf-8');
-        return JSON.parse(info);
+        const productsArray = JSON.parse(info)
+        return limit ? productsArray.slice(0,limit): productsArray
       } else {
         return [];
       }
@@ -24,7 +25,7 @@ class ProductManager {
 
   async createProduct(obj) {
     try {
-      const products = await this.getProducts();
+      const products = await this.getProducts({});
       let id;
       if (!products.length) {
         id = 1;
@@ -42,13 +43,9 @@ class ProductManager {
 
   async getProducById(idProduct) {
     try {
-      const products = await this.getProducts();
+      const products = await this.getProducts({});
       const product = products.find((p) => p.id === idProduct);
-      if (product) {
-        return product;
-      } else {
-        return 'not product';
-      }
+     return product
     } catch (error) {
       return error;
     }
@@ -121,7 +118,7 @@ const product2 = {
 async function test() {
 
 //CREA UN json DE PRODUCTO
-  const manager1 = new ProductManager('Products.json');
+  const manager1 = new ProductsManager('Products.json');
 
 
 //const products = await manager1.getProducts();
@@ -129,7 +126,7 @@ async function test() {
 
 
 // CREA UN PRODUCTO COLOCANDO IN ID
- // await manager1.createProduct(product2);
+ //await manager1.createProduct(product1);
  
   
 //ELIMINA PRODUCTO
@@ -137,14 +134,16 @@ async function test() {
 
 
 //MOD. PRODUCTO
-  const updatedProduct = {
-   title: 'Producto actualizado',
-    price: 300,
-    stock: 30,
-  };
-  const fieldsToUpdate = ['title', 'price', 'stock'];
-  const result = await manager1.updateProduct(2, updatedProduct, fieldsToUpdate);
- console.log(result);
+ // const updatedProduct = {
+ //  title: 'Producto actualizado',
+  //  price: 300,
+   // stock: 30,
+ // };
+  //const fieldsToUpdate = ['title', 'price', 'stock'];
+  //const result = await manager1.updateProduct(2, updatedProduct, fieldsToUpdate);
+ //console.log(result);
 }
 
 test();
+
+export const productsManager = new ProductsManager('Products.json')
