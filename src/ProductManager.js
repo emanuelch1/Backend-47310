@@ -96,29 +96,29 @@ class ProductsManager {
 
 
 // PRODUCTOS
-const product1 = {
-  title: 'producto prueba 1',
-  description: 'Este es un producto prueba',
-  price: 200,
-  thumbnail: 'sin img',
-  code: 'abc123',
-  stock: 25,
-};
-const product2 = {
-    title: 'producto prueba 2',
-    description: 'Este es un producto prueba',
-    price: 200,
-    thumbnail: 'sin img',
-    code: 'abc123',
-    stock: 25,
-  };
+//const product1 = {
+//  title: 'producto prueba 1',
+//  description: 'Este es un producto prueba',
+//  price: 200,
+//  thumbnail: 'sin img',
+//  code: 'abc123',
+//  stock: 25,
+//};
+//const product2 = {
+//    title: 'producto prueba 2',
+//    description: 'Este es un producto prueba',
+//    price: 200,
+//    thumbnail: 'sin img',
+//    code: 'abc123',
+ //   stock: 25,
+ // };
 
 
   //LA FUNCION TEST
-async function test() {
+//async function test() {
 
 //CREA UN json DE PRODUCTO
-  const manager1 = new ProductsManager('Products.json');
+  //const manager1 = new ProductsManager('Products.json');
 
 
 //const products = await manager1.getProducts();
@@ -126,7 +126,8 @@ async function test() {
 
 
 // CREA UN PRODUCTO COLOCANDO IN ID
- //await manager1.createProduct(product1);
+ //
+  // await manager1.createProduct(product1);
  
   
 //ELIMINA PRODUCTO
@@ -142,8 +143,8 @@ async function test() {
   //const fieldsToUpdate = ['title', 'price', 'stock'];
   //const result = await manager1.updateProduct(2, updatedProduct, fieldsToUpdate);
  //console.log(result);
-}
+//}
 
-test();
+//test();
 
 export const productsManager = new ProductsManager('Products.json')
