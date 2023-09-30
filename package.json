@@ -30,6 +30,7 @@
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
     "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
     "fill-range": "^7.0.1",
     "finalhandler": "^1.2.0",
     "forwarded": "^0.2.0",
@@ -82,6 +83,7 @@
     "setprototypeof": "^1.2.0",
     "side-channel": "^1.0.4",
     "simple-update-notifier": "^2.0.0",
+    "socket.io": "^4.7.2",
     "statuses": "^2.0.1",
     "supports-color": "^5.5.0",
     "to-regex-range": "^5.0.1",
@@ -95,7 +97,7 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon src/server.js"
   },
   "author": "",
   "license": "ISC"

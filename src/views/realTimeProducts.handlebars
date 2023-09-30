@@ -1,0 +1,29 @@
+<div>
+    <h2>add product</h2>
+    <form id="form">
+        title: <input type="text" name="title" id="title">
+        description: <input type="text" name="description" id="description">
+        price: <input type="number" name="price" id="price">
+        <input type="submit" value="Create">
+    </form>
+
+    <h2>Delete product</h2>
+
+</div>
+
+<table id="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+       
+    </tbody>
+</table>
+
+<script src="/socket.io/socket.io.js">  </script>
+<script src="/js/index.js"></script>
