@@ -1,24 +1,16 @@
 import { productModel } from "../db/models/products.models.js";
+import BasicManager from "./basicManager.js";
 
-class ProductsManager{
-    async finAll(){
-        return productModel.find();
-    }
+class ProductsManager extends BasicManager{
+   constructor(){
+    super (productModel);
+   }
 
-    async findById(id){
-        return productModel.findById(id);
-    }
-    async createOne(obj){
-        return productModel.create(obj);
-    }
-
-    async updateOne(id, obj){
-        return productModel.updateOne({ _id: id}, obj);
-    }
-
-    async deleteOne(id){
-        return productModel.deleteOne({ _id: id});
-    }
+   async finAllProducts(obj){
+    console.log("obj",obj);
+    const {limit=10, page=1, sort, ...queryFilter} = obj;
+    console.log("queryFilter", queryFilter);
+   }
 }
 
-export const ProductsManager = new ProductsManager();
+export const productsManager = new ProductsManager();

@@ -6,7 +6,7 @@ import { engine } from 'express-handlebars'
 import viewsRouter from './router/views.router.js'
 import { Server, Socket } from 'socket.io'
 import {productsManager} from './ProductManager.js'
-
+import "./db/configDB.js"
 
 const app = express()
 

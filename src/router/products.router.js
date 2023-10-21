@@ -33,6 +33,12 @@ try {
 }
   })
 
+  router.get('/', async(req, res)=>{
+    const products = await productsManager.findAllProducts(req.query);
+    res.json({products})
+  }
+  )
+
 
 router.post('/', async(req, res)=>{
     const {title, description, price, thumbnail, code, stock}= req.body
