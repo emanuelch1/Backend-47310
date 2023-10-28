@@ -10,4 +10,8 @@ router.get('/realtime', (req,res)=>{
     res.render('realTimeProducts')
 })
 
+router.get('/', (req, res)=>{
+    res.render('login')
+})
+
 export default router;

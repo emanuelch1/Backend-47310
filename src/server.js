@@ -7,9 +7,13 @@ import viewsRouter from './router/views.router.js'
 import { Server, Socket } from 'socket.io'
 import {productsManager} from './ProductManager.js'
 import "./db/configDB.js"
+import cookieParser from 'cookie-parser'
+import loginRouter from './router/loginRouter.js'
 
 const app = express()
-
+// COOKIES
+const secret = '123456789'
+app.use(cookieParser(secret));
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -20,11 +24,12 @@ app.engine('handlebars', engine());
 app.set('views', __dirname +'/views')
 app.set('view engine', 'handlebars');
 
+//login
+app.use('/login', loginRouter)
 // routes
 app.use('/api/products', productsRouter)
 app.use('/api/carts', cartRouter)
 app.use('/', viewsRouter)
-
 
 const httpServer = app.listen(8080, ()=>{
     console.log("Escuchando al puerto 8080");
