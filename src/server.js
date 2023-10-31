@@ -9,6 +9,9 @@ import {productsManager} from './ProductManager.js'
 import "./db/configDB.js"
 import cookieParser from 'cookie-parser'
 import loginRouter from './router/loginRouter.js'
+import session from 'express-session'
+import FileStore  from 'session-file-store'
+
 
 const app = express()
 // COOKIES
@@ -18,6 +21,20 @@ app.use(cookieParser(secret));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname+'/public'))
+
+//session
+const fileStore = FileStore(session)
+app.use(session({
+    secret:"sessionsecrekey",
+    cookie:{
+        maxAge:60 * 60 * 1000,
+    },
+    store:new fileStore(
+        {
+            path: __dirname + "/sessions"
+        }
+    )
+}));
 
 // handerlebars
 app.engine('handlebars', engine());
