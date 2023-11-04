@@ -11,7 +11,7 @@ import cookieParser from 'cookie-parser'
 import loginRouter from './router/loginRouter.js'
 import session from 'express-session'
 import FileStore  from 'session-file-store'
-
+import usersRouter from './router/users.router.js'
 
 const app = express()
 // COOKIES
@@ -21,6 +21,9 @@ app.use(cookieParser(secret));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname+'/public'))
+
+//user router
+app.use('/api/users', usersRouter)
 
 //session
 const fileStore = FileStore(session)
